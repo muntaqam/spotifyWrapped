@@ -7,7 +7,7 @@ const SpotifyStrategy = require('passport-spotify').Strategy;
 const crypto = require('crypto');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Secret key
 const secret = crypto.randomBytes(64).toString('hex');
@@ -30,7 +30,7 @@ app.use(passport.session());
 passport.use(new SpotifyStrategy({
   clientID: 'c9fdd3ba87e846eba854d3bdbad01869', // Use the constants directly
   clientSecret: '5faa6ae8ed154b9bab64cfa57e4711be',
-  callbackURL: 'http://localhost:3000/callback',
+  callbackURL: 'http://localhost:4000/callback',
 },
 (accessToken, refreshToken, expires_in, profile, done) => {
   return done(null, { accessToken, profile });

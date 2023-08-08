@@ -1,12 +1,16 @@
 import React from 'react';
-import Login from './components/Login'; // Adjust the path as needed
+import Login from './components/Login';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Login />
-      {/* Other components and content can go here */}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        {/* other routes */}
+      </Routes>
+    </Router>
   );
 }
 
