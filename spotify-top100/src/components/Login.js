@@ -10,7 +10,7 @@ const Login = () =>{
         {/* Use an anchor element for redirection */}
         <a href="http://localhost:4000/auth/spotify" className="text-white font-bold flex items-center justify-start" onClick={handleLogin}>
           <img src={process.env.PUBLIC_URL + '/spotify-logo.png'} alt="Spotify" className="h-6 w-6 mr-2" />
-          Login with Spotify
+          Login with Spotifyy
         </a>
       </form>
     </div>
