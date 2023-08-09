@@ -58,6 +58,10 @@ app.get('/callback', passport.authenticate('spotify', { failureRedirect: '/' }),
 });
 
 app.get('/top100', (req, res) => {
+  // Make sure the user is authenticated
+  if (!req.isAuthenticated()) {
+    return res.status(401).send('Unauthorized');
+  }
   const accessToken = req.user.accessToken;
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
@@ -65,7 +69,8 @@ app.get('/top100', (req, res) => {
 
   axios.get('https://api.spotify.com/v1/me/top/tracks?limit=100', { headers })
     .then(response => {
-      res.json(response.data);
+      const topSongs = response.data.items
+      res.json(topSongs);
     })
     .catch(error => {
       console.error(error);
